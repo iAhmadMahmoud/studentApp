@@ -1,0 +1,18 @@
+<div class="container">
+    <label>Select Category:</label>
+
+    <select [(ngModel)]="selectedCategoryId">
+
+        @for(category of categories; track category.id){
+
+        <option [value]="category.id">
+            {{category.title}}
+        </option>
+
+        }
+
+    </select>
+    <app-courses [selectedid]="selectedCategoryId" (onTotalOrderPriceChanged)="setOrderPrice($event)"></app-courses>
+
+    <h2>order price is : {{orderPrice}}</h2>
+</div>
