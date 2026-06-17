@@ -1,0 +1,33 @@
+<div class="container my-5 text-center" style="max-width: 500px;">
+
+  <div class="card p-4 shadow-sm border-0 mb-4 bg-light">
+    <h5 class="text-muted small text-uppercase">Live Order Pipeline</h5>
+    <h2 class="fw-bold text-primary m-0">{{ status }}</h2>
+  </div>
+
+  <div class="card p-4 shadow-sm border-0">
+    <div class="progress" style="height: 22px;">
+      
+      @if (index == 0) {
+        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 25%">25%</div>
+      } @else if (index == 1) {
+        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 50%">50%</div>
+      } @else if (index == 2) {
+        <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" style="width: 75%">75%</div>
+      } @else if (index == 3) {
+        <div class="progress-bar bg-success" style="width: 100%">100% Arrived</div>
+      } @else {
+        <div class="progress-bar bg-secondary" style="width: 0%">0%</div>
+      }
+
+    </div>
+    
+    <div class="d-flex justify-content-between mt-2 text-muted small fw-bold">
+      <span [class.text-success]="index >= 0">Confirmed</span>
+      <span [class.text-success]="index >= 1">Preparing</span>
+      <span [class.text-success]="index >= 2">Out for Delivery</span>
+      <span [class.text-success]="index >= 3">Delivered</span>
+    </div>
+  </div>
+
+</div>
