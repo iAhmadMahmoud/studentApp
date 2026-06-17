@@ -19,7 +19,8 @@
 
         <p>
             <strong>Price:</strong>
-            <span #priceSpan>{{course.price|discount:20}}</span> EGP
+            <span #priceSpan>{{course.price|discount:20}}</span> EGP instead of <span
+                style="text-decoration: line-through;">{{course.price}} EGP</span>
         </p>
 
         <p>
@@ -38,14 +39,17 @@
                 Course Full
             </p>
             }
+            <div class="d-flex gap-2  ">
+                <button appAppDisableAfterClick (click)="register(course,priceSpan.textContent)"
+                    [disableCondition]="course.seats === 0" [disabled]="course.seats === 0" class="rounded-4">
 
-            <button appAppDisableAfterClick (click)="register(course,priceSpan.textContent)"
-                [disableCondition]="course.seats === 0"
-                [disabled]="course.seats === 0">
-                
-                Register
-            </button>
+                    Register
+                </button>
+                <button class="btn btn-primary rounded-4" (click)="navToDetails(course.id)">
 
+                    Details
+                </button>
+            </div>
     </div>
 
     }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ICategory } from '../../models/icategory';
 import { FormsModule } from '@angular/forms';
 import { Courses } from '../courses/courses';
+import { CategoryService } from '../../services/category-service';
 
 @Component({
   selector: 'app-category',
@@ -10,15 +11,12 @@ import { Courses } from '../courses/courses';
   styleUrl: './category.css',
 })
 export class Category {
+  private category = inject(CategoryService)
+
+  categories : ICategory[] = this.category.getAllCategory();
   selectedCategoryId: number = 0;
   orderPrice:number=0
-  categories: ICategory[] = [
-    { id: 0, title: 'All' },
-    { id: 1, title: 'Programming' },
-    { id: 2, title: 'Design' },
-    { id: 3, title: 'Marketing' },
-    { id: 4, title: 'Business' },
-  ];
+
     setOrderPrice(recievedTotalOrderPrice:number){
     this.orderPrice=recievedTotalOrderPrice
   }
